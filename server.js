@@ -158,6 +158,7 @@ function alexaSync() {
 function updateHomeState() {
     // get home state from local server, and put to bridge with id
     getBoseHomeState(function(homeStateGenerated) {
+        console.log("Zones Playing:",homeStateGenerated.zonesPlaying);
         var postOptions = {
             'uri': bridgeBasePath + "/api/homes",
             'method': 'PUT',
@@ -172,12 +173,12 @@ function updateHomeState() {
                 console.log("Error:", error)
             } else {
                 var currentdate = new Date();
-//                 console.log("Updater has run. Synced: " + (currentdate.getMonth()+1)  + "/" 
-//                 + currentdate.getDate() + "/"
-//                 + currentdate.getFullYear() + " @ "  
-//                 + currentdate.getHours() + ":"  
-//                 + currentdate.getMinutes() + ":" 
-//                 + currentdate.getSeconds());
+                console.log("Updater has run. Synced: " + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getDate() + "/"
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds());
                 
             }
         });
@@ -269,7 +270,9 @@ function handleKeys() {
             console.log("Error:", error)
         } else {
             var keyStack = body.keyStack;
-            if(keyStack.length > 0) {
+            if(!keyStack) {
+                console.log("That home does not exist.")
+            } else if(keyStack.length > 0) {
                 request({
                     'uri': stServerBasePath + keyStack[0],
                     'method': 'GET',
@@ -286,7 +289,7 @@ function handleKeys() {
                                     + currentdate.getMinutes() + ":" 
                                     + currentdate.getSeconds());
                         
-                        // TODO need to shift on the server
+                        // shift on the server
                         request({
                             'uri': bridgeBasePath + '/api/homes/shiftStack?bridgeID=' + bridgeID,
                             'method': 'GET',
