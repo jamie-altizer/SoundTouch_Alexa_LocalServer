@@ -131,8 +131,8 @@ var httpServer = http.createServer(app);
 httpServer.listen(settings.port, function () {
     var port = httpServer.address().port;
     console.log('HTTP REST server listening on port', port);
-    homemgr();
-    keymgr();
+    homemgr.homemgr();
+    keymgr.keymgr();
 });
 
 
