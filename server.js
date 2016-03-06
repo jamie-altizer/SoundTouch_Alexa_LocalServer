@@ -143,16 +143,16 @@ discovery.search();
 ///////////////////////////
 
 function alexaSync() {
+    console.log("counter:", counter);
     if(counter == 0) {
         updateHomeState();
     }
     handleKeys();
-    counter += 1;
-    console.log("Counter:",counter);
     if(counter == 5) {
         updateHomeState();
-        counter = 1;
+        counter = 0;
     }
+    counter += 1;
     setTimeout(alexaSync, 1000);
 };
 
