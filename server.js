@@ -10,8 +10,8 @@ var express = require('express');
 var request = require('request');
 
 var discovery = require('./discovery');
-var keymgr = require('/.keymgr');
-var homemgr = require('/.homemgr');
+var keymgr = require('./keymgr');
+var homemgr = require('./homemgr');
 
 var server = this;
 
