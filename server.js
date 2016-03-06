@@ -169,12 +169,12 @@ function updateHomeState() {
                 console.log("Error:", error)
             } else {
                 var currentdate = new Date();
-                console.log("Updater has run. Synced: " + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getDate() + "/"
-                + currentdate.getFullYear() + " @ "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds());
+//                 console.log("Updater has run. Synced: " + (currentdate.getMonth()+1)  + "/" 
+//                 + currentdate.getDate() + "/"
+//                 + currentdate.getFullYear() + " @ "  
+//                 + currentdate.getHours() + ":"  
+//                 + currentdate.getMinutes() + ":" 
+//                 + currentdate.getSeconds());
                 
             }
         });
@@ -265,7 +265,6 @@ function handleKeys() {
         if (error) {
             console.log("Error:", error)
         } else {
-            console.log(body);
             var keyStack = body.keyStack;
             if(keyStack.length > 0) {
                 request({
@@ -301,12 +300,12 @@ function handleKeys() {
                 
             } else {
                 var currentdate = new Date(); 
-                console.log("No keys found. Checked: " + (currentdate.getMonth()+1)  + "/" 
-                            + currentdate.getDate() + "/"
-                            + currentdate.getFullYear() + " @ "  
-                            + currentdate.getHours() + ":"  
-                            + currentdate.getMinutes() + ":" 
-                            + currentdate.getSeconds());
+//                 console.log("No keys found. Checked: " + (currentdate.getMonth()+1)  + "/" 
+//                             + currentdate.getDate() + "/"
+//                             + currentdate.getFullYear() + " @ "  
+//                             + currentdate.getHours() + ":"  
+//                             + currentdate.getMinutes() + ":" 
+//                             + currentdate.getSeconds());
             }
         }
     });
