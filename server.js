@@ -10,6 +10,8 @@ var express = require('express');
 var request = require('request');
 
 var discovery = require('./discovery');
+var keymgr = require('/.keymgr');
+var homemgr = require('/.homemgr');
 
 var server = this;
 
@@ -129,6 +131,8 @@ var httpServer = http.createServer(app);
 httpServer.listen(settings.port, function () {
     var port = httpServer.address().port;
     console.log('HTTP REST server listening on port', port);
+    homemgr();
+    keymgr();
 });
 
 
