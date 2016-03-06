@@ -227,6 +227,10 @@ function getBoseHomeState(boseCallback) {
 
                                 // check for now playing
                                 if (nowPlaying.source != 'STANDBY') {
+                                    nowPlaying.art.link = nowPlaying.art.$t;
+                                    nowPlaying.time.elapsed = nowPlaying.time.$t;
+                                    delete nowPlaying.art.$t;
+                                    delete nowPlaying.time.$t;
                                     homeState.speakers[element.name.toLowerCase()].nowPlaying = nowPlaying;
 
                                     // check if master
