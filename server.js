@@ -298,7 +298,6 @@ function handleKeys() {
                                 console.log("Error:", error)
                             } else {
                                 console.log("server shifted.");
-                                setTimeout(handleKeys, 1000);
                             }
                         });
                     }
@@ -312,7 +311,6 @@ function handleKeys() {
                             + currentdate.getHours() + ":"  
                             + currentdate.getMinutes() + ":" 
                             + currentdate.getSeconds());
-                setTimeout(handleKeys, 1000);
             }
         }
     });
