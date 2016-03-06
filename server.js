@@ -13,7 +13,10 @@ var discovery = require('./discovery');
 // BasePaths should *NOT* include a trailing '/'
 var stServerBasePath = 'http://127.0.0.1:5006';
 var bridgeBasePath = 'http://alexabridge.zwrose.com';
-var bridgeID = 1;
+
+// REPLACE BRIDGE ID WITH USER'S ALEXA_ID
+var bridgeID = "needs_config";
+
 var counter = 0;
 
 var server = this;
@@ -156,7 +159,7 @@ function updateHomeState() {
     // get home state from local server, and put to bridge with id
     getBoseHomeState(function(homeStateGenerated) {
         var postOptions = {
-            'uri': bridgeBasePath + "/api/homeStates",
+            'uri': bridgeBasePath + "/api/homes",
             'method': 'PUT',
             'body': {
                 'currentState': homeStateGenerated,
@@ -258,7 +261,7 @@ function getBoseHomeState(boseCallback) {
 }
 function handleKeys() {
     request({
-        'uri': bridgeBasePath + "/api/homeKeys/" + bridgeID,
+        'uri': bridgeBasePath + "/api/homes/" + bridgeID,
         'method': 'GET',
         'json': true
     }, function (error, response, body) {
@@ -285,7 +288,7 @@ function handleKeys() {
                         
                         // TODO need to shift on the server
                         request({
-                            'uri': bridgeBasePath + '/api/homeKeys/shiftStack?bridgeID=' + bridgeID,
+                            'uri': bridgeBasePath + '/api/homes/shiftStack?bridgeID=' + bridgeID,
                             'method': 'GET',
                             'json': true
                         }, function (error, response, body) {
@@ -299,7 +302,7 @@ function handleKeys() {
                 });
                 
             } else {
-                var currentdate = new Date(); 
+//                 var currentdate = new Date(); 
 //                 console.log("No keys found. Checked: " + (currentdate.getMonth()+1)  + "/" 
 //                             + currentdate.getDate() + "/"
 //                             + currentdate.getFullYear() + " @ "  
