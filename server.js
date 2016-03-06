@@ -173,6 +173,7 @@ function updateHomeState() {
                 console.log("Error:", error)
             } else {
                 var currentdate = new Date();
+                console.log(body);
                 console.log("Updater has run. Synced: " + (currentdate.getMonth()+1)  + "/" 
                 + currentdate.getDate() + "/"
                 + currentdate.getFullYear() + " @ "  
