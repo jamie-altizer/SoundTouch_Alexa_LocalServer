@@ -14,6 +14,7 @@ var discovery = require('./discovery');
 var stServerBasePath = 'http://127.0.0.1:5006';
 var bridgeBasePath = 'http://alexabridge.zwrose.com';
 var bridgeID = 1;
+var counter = 0;
 
 var server = this;
 
@@ -133,14 +134,28 @@ var httpServer = http.createServer(app);
 httpServer.listen(settings.port, function () {
     var port = httpServer.address().port;
     console.log('HTTP REST server listening on port', port);
-    updateHomeState();
-    handleKeys();
+    alexaSync();
 });
 
 
 discovery.search();
 
 ///////////////////////////
+
+function alexaSync() {
+    if(counter == 0) {
+        updateHomeState();
+    }
+    handleKeys();
+    counter += 1;
+    console.log("Counter:",counter);
+    if(counter == 5) {
+        updateHomeState();
+        counter = 1;
+    }
+    setTimeout(alexaSync, 1000);
+};
+
 function updateHomeState() {
     // get home state from local server, and put to bridge with id
     getBoseHomeState(function(homeStateGenerated) {
@@ -164,7 +179,7 @@ function updateHomeState() {
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds());
-                setTimeout(updateHomeState, 5000);
+                
             }
         });
     });
