@@ -12,10 +12,15 @@ var request = require('request');
 var discovery = require('./discovery');
 // BasePaths should *NOT* include a trailing '/'
 var stServerBasePath = 'http://127.0.0.1:5006';
-var bridgeBasePath = 'http://alexabridge.zwrose.com';
 
-// REPLACE BRIDGE ID WITH USER'S ALEXA_ID
+///////////////////// USER CONFIG ////////////////////
+// for bridgeBasePath, enter the root path to a server running an instance of AlexaSoundTouch_RemoteServer
+// AlexaSoundTouch_RemoteServer source code can be found at https://github.com/zwrose/AlexaSoundTouch_RemoteServer.git
+var bridgeBasePath = 'http://<your.basepath.here>';
+
+// for bridgeID, enter the user's Alexa_ID, the unique string that comes along with each Alexa request.
 var bridgeID = "needs_config";
+/////////////////// END USER CONFIG //////////////////
 
 var counter = 0;
 
