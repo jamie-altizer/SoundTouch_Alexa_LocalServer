@@ -7,7 +7,7 @@ This repository contains one of the three components necessary enable Alexa to c
 This Local Server Component tracks presence and activity of SoundTouch speakers on the same network, and communicates with an AlexaSoundTouch\_RemoteServer  instance to broker commands and status updates.
 
 ## Setup
-These instructions assume you already have already completed the setup instructions for both your [AlexaSoundTouch\_RemoteServer](https://github.com/zwrose/AlexaSoundTouch_RemoteServer) instance and your [AlexaSoundTouch\_AlexaSkill](https://github.com/zwrose/AlexaSoundTouch_AlexaSkill) instantce. They also assume installation on a machine running Ubuntu 14.04 on the *same local network as your SoundTouch speakers.*
+These instructions assume you already have already completed the setup instructions for both your [AlexaSoundTouch\_RemoteServer](https://github.com/zwrose/AlexaSoundTouch_RemoteServer) instance and your [AlexaSoundTouch\_AlexaSkill](https://github.com/zwrose/AlexaSoundTouch_AlexaSkill) instance. They also assume installation on a machine running Ubuntu 14.04 on the *same local network as your SoundTouch speakers.*
 
 1. Ensure these apt packages are installed: git-core, libnss-mdns, libavahi-compat-libdnssd-dev, build-essential
 2. Ensure node v4.x is installed
