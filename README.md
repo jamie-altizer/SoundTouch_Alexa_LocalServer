@@ -12,7 +12,7 @@ These instructions assume you already have already completed the setup instructi
 1. Ensure these apt packages are installed: git-core, libnss-mdns, libavahi-compat-libdnssd-dev, build-essential
 2. Ensure node v4.x is installed
 3. run
-    `git clone https://github.com/zwrose/AlexaSoundTouch\_LocalServer.git`
+    `git clone https://github.com/zwrose/AlexaSoundTouch_LocalServer.git`
 4. Enter the newly cloned directory and run
     `sudo npm install`
 5. Edit server.js to set the appropriate `bridgeBasePath` and `bridgeID` variables. `bridgeBasePath` should be the path to your AlexaSoundTouch\_RemoteServer instance. `bridgeID` should be your AlexaID as determined in [AlexaSoundTouch\_AlexaSkill](https://github.com/zwrose/AlexaSoundTouch_AlexaSkill) setup step 7.
