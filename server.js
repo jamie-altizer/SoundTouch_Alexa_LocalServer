@@ -13,6 +13,8 @@ var discovery = require('./discovery');
 // BasePaths should *NOT* include a trailing '/'
 var stServerBasePath = 'http://127.0.0.1:5006';
 
+// Jamie updated this
+
 ///////////////////// USER CONFIG ////////////////////
 // for bridgeBasePath, enter the root path to a server running an instance of AlexaSoundTouch_RemoteServer
 // AlexaSoundTouch_RemoteServer source code can be found at https://github.com/zwrose/AlexaSoundTouch_RemoteServer.git
