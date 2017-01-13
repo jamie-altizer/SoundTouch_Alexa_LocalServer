@@ -16,10 +16,10 @@ var stServerBasePath = 'http://127.0.0.1:5006';
 ///////////////////// USER CONFIG ////////////////////
 // for bridgeBasePath, enter the root path to a server running an instance of AlexaSoundTouch_RemoteServer
 // AlexaSoundTouch_RemoteServer source code can be found at https://github.com/zwrose/AlexaSoundTouch_RemoteServer.git
-var bridgeBasePath = 'http://<your.basepath.here>';
+var bridgeBasePath = 'http://35.167.84.140';
 
 // for bridgeID, enter the user's Alexa_ID, the unique string that comes along with each Alexa request.
-var bridgeID = "needs_config";
+var bridgeID = "amzn1.ask.account.AHLC7FCTA37KIM67K24JMP6KC4AAQPMJ3QAMGEUVUJJYOYNIPFSQBE35ILZWPHIT7DXDPMJLBVNIVKHOVS3XLYNVXNYVJ3I6VTWHQJLUCZ7JYWVAWEACMCOGENPMV73LMLAUC5TV6QYTAE5ALXC5WPQDHFYTPOTNLR6EL2P3ML4NGVB42V3HJR5BIQKDYJGVPXVJVJ6IZAQIROA"; //"amzn1.ask.skill.6e007bdf-d3bd-4ef5-bc25-1478e4932096";
 /////////////////// END USER CONFIG //////////////////
 
 var counter = 0;
@@ -179,13 +179,13 @@ function updateHomeState() {
             } else {
                 var currentdate = new Date();
                 console.log(body);
-                console.log("Updater has run. Synced: " + (currentdate.getMonth()+1)  + "/" 
+                console.log("Updater has run. Synced: " + (currentdate.getMonth()+1)  + "/"
                 + currentdate.getDate() + "/"
-                + currentdate.getFullYear() + " @ "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
+                + currentdate.getFullYear() + " @ "
+                + currentdate.getHours() + ":"
+                + currentdate.getMinutes() + ":"
                 + currentdate.getSeconds());
-                
+
             }
         });
     });
@@ -226,7 +226,7 @@ function getBoseHomeState(boseCallback) {
 
                                 // get the device names into the array
                                 homeState.speakers[element.name.toLowerCase()] = element;
-                                
+
                                 // add volume
                                 homeState.speakers[element.name.toLowerCase()].currentVolume = currentVolume;
 
@@ -285,7 +285,7 @@ function handleKeys() {
         } else {
             var keyStack = body.keyStack;
             if(!keyStack) {
-                console.log("That home does not exist.")
+                console.log("That home does not exist. [" + bridgeID +"]")
             } else if(keyStack.length > 0) {
                 request({
                     'uri': stServerBasePath + keyStack[0],
@@ -295,14 +295,14 @@ function handleKeys() {
                     if (error) {
                         console.log("Error:", error)
                     } else {
-                        var currentdate = new Date(); 
-                        console.log("Called " + stServerBasePath + keyStack[0] + ". Sent: " + (currentdate.getMonth()+1)  + "/" 
+                        var currentdate = new Date();
+                        console.log("Called " + stServerBasePath + keyStack[0] + ". Sent: " + (currentdate.getMonth()+1)  + "/"
                                     + currentdate.getDate() + "/"
-                                    + currentdate.getFullYear() + " @ "  
-                                    + currentdate.getHours() + ":"  
-                                    + currentdate.getMinutes() + ":" 
+                                    + currentdate.getFullYear() + " @ "
+                                    + currentdate.getHours() + ":"
+                                    + currentdate.getMinutes() + ":"
                                     + currentdate.getSeconds());
-                        
+
                         // shift on the server
                         request({
                             'uri': bridgeBasePath + '/api/homes/shiftStack?bridgeID=' + bridgeID,
@@ -317,14 +317,14 @@ function handleKeys() {
                         });
                     }
                 });
-                
+
             } else {
-//                 var currentdate = new Date(); 
-//                 console.log("No keys found. Checked: " + (currentdate.getMonth()+1)  + "/" 
+//                 var currentdate = new Date();
+//                 console.log("No keys found. Checked: " + (currentdate.getMonth()+1)  + "/"
 //                             + currentdate.getDate() + "/"
-//                             + currentdate.getFullYear() + " @ "  
-//                             + currentdate.getHours() + ":"  
-//                             + currentdate.getMinutes() + ":" 
+//                             + currentdate.getFullYear() + " @ "
+//                             + currentdate.getHours() + ":"
+//                             + currentdate.getMinutes() + ":"
 //                             + currentdate.getSeconds());
             }
         }
